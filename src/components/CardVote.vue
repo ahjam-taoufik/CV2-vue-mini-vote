@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="seed in seeds" :key="seed.id" class="container-adherent">
+        <div v-for="seed in sortByVote" :key="seed.id" class="container-adherent">
             <img :src='seed.img' alt="">
             <p class="card">
 
@@ -14,12 +14,15 @@
 
 <script>
 export default {
-    props: ["seeds"],
+    props: ["seeds","sortByVote"],
     methods: {
          addVote(seedId){
            this.$emit('add-vote',seedId);
         }
-    }
+    },
+    
+
+ 
 
 }
 </script>
