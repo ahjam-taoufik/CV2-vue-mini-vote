@@ -1,28 +1,32 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <Card-vote  :seeds="seeds"  @add-vote="addVote" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import CardVote from './components/CardVote.vue'
+import seeds from './seed' 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    CardVote
+  },
+  data(){
+    return {
+       seeds:seeds.adherents
+    }
+  },
+  methods: {
+    addVote(seedId){
+        const index=this.seeds.findIndex(seed=>seed.id===seedId)
+        this.seeds[index].vote++
+
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
+
 </style>
